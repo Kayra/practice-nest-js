@@ -22,4 +22,11 @@ export class BooksService {
       resolve(book);
     });
   }
+
+  addBook(book: any): Promise<any> {
+    return new Promise((resolve) => {
+      this.books.push(book);
+      resolve(this.books);
+    });
+  }
 }
