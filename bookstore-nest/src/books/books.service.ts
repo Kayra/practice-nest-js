@@ -29,4 +29,16 @@ export class BooksService {
       resolve(this.books);
     });
   }
+
+  deleteBook(bookId: number): Promise<any> {
+    bookId = Number(bookId);
+    return new Promise((resolve) => {
+      const index = this.books.findIndex((book) => book.id === bookId);
+      if (index === -1) {
+        throw new HttpException('Book not found.', 404);
+      }
+      this.books.splice(index, 1);
+      resolve(this.books);
+    });
+  }
 }
